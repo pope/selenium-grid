@@ -2,6 +2,7 @@ module Java
 
   class Classpath
     require 'pathname'
+    require 'rbconfig'
 
     def initialize(root_dir)
       @root = root_dir
@@ -20,7 +21,7 @@ module Java
     end
 
     def separator
-     PLATFORM['win32'] ? ";" : ":"
+     Config::CONFIG['host_os'] =~ /mswin|mingw/ ? ';' : ':'
     end
 
   end
